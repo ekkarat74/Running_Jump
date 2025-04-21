@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private float maxTime = 2.2f;
+    public static float maxTime = 2.2f;
     [SerializeField] private float heightRange = 0.45f;
     [SerializeField] private GameObject Obstacle;
     

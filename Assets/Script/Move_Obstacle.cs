@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Move_Obstacle : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    public static float speed = 2f;
     
     // Update is called once per frame
     void Update()

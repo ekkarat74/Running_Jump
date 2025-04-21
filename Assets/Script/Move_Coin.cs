@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Move_Coin : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    public static float speed;
     
     // Update is called once per frame
     void Update()

@@ -16,8 +16,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddCoid()
+    public void AddScore()
     {
         UIManager.instance.AddTextScore();
+    }
+    
+    public void AddCoid()
+    {
+        UIManager.instance.AddTextCoin();
     }
 }
