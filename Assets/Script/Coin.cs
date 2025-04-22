@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public int score = 1;
-    
     private bool isCollected = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
