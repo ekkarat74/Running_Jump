@@ -4,28 +4,45 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public static float maxTime = 2.2f;
-    [SerializeField] private float heightRange = 0.45f;
-    [SerializeField] private GameObject Obstacle;
+    [Header("Time Spawner")]
+    public static float TimeSpawnObstacle = 2.2f;
+    public static float TimeSpawnEnemy = 2f;
     
-    [SerializeField] private float Destoryobstacle = 10f;
-    private float timer;
+    [Header("Settings Spawner")]
+    [SerializeField] private float heightRange = 0.45f;
+    [SerializeField] private float DestoryObject = 10f;
+    
+    [Header("Game Object Spawner")]
+    [SerializeField] private GameObject Obstacle;
+    [SerializeField] private GameObject Enemy;
+
+    private float obstacletimer;
+    private float enemytimer;
     
     // Start is called before the first frame update
     void Start()
     {
         SpawnObstacle();
+        SpawnEnemy();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer > maxTime)
+        obstacletimer += Time.deltaTime;
+        enemytimer += Time.deltaTime;
+        
+        if (obstacletimer > TimeSpawnObstacle)
         {
             SpawnObstacle();
-            timer = 0;
+            obstacletimer = 0;
         }
-        timer += Time.deltaTime;
+
+        if (enemytimer > TimeSpawnEnemy)
+        {
+            SpawnEnemy();
+            enemytimer = 0;
+        }
     }
 
     void SpawnObstacle()
@@ -33,6 +50,13 @@ public class Spawner : MonoBehaviour
         Vector3 spawnPosition = transform.position + new Vector3(0, Random.Range(-heightRange, heightRange));
         GameObject obstacle = Instantiate(Obstacle, spawnPosition, Quaternion.identity);
         
-        Destroy(obstacle, Destoryobstacle);
+        Destroy(obstacle, DestoryObject);
+    }
+
+    void SpawnEnemy()
+    {
+        Vector3 spawnPos = transform.position + new Vector3(0, Random.Range(-heightRange, heightRange), 0);
+        GameObject enemy = Instantiate(Enemy, spawnPos, Quaternion.identity);
+        Destroy(enemy, DestoryObject);
     }
 }

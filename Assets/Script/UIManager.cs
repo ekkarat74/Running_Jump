@@ -11,7 +11,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI CoinText;
     public GameObject gameOverPanel;
+    public GameObject StartGamePanel;
     
+    private static bool hasStartGame = false;
     private int coin = 0;
     private int score = 0;
     
@@ -26,12 +28,17 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        HideAllPanels();
-    }
-    
-    private void HideAllPanels()
-    {
-        gameOverPanel.SetActive(false);
+        if (!hasStartGame)
+        {
+            Time.timeScale = 0f;
+            ShowStartGamePanel();
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            StartGamePanel.SetActive(false);
+        }
+        
     }
 
     public void AddTextScore()
@@ -41,29 +48,29 @@ public class UIManager : MonoBehaviour
         switch (score)
         {
             case 0:
-                Spawner.maxTime = 2.2f;
+                Spawner.TimeSpawnObstacle = 2.2f;
+                Spawner.TimeSpawnEnemy = 2.2f;
                 Move_Obstacle.speed = 2f;
-                Move_Coin.speed = 2f;
                 break;
             case 8:
-                Spawner.maxTime = 2;
+                Spawner.TimeSpawnObstacle = 2;
+                Spawner.TimeSpawnEnemy = 2f;
                 Move_Obstacle.speed = 3f;
-                Move_Coin.speed = 3f;
                 break;
             case 16:
-                Spawner.maxTime = 1.8f;
+                Spawner.TimeSpawnObstacle = 1.8f;
+                Spawner.TimeSpawnEnemy = 1.8f;
                 Move_Obstacle.speed = 4f;
-                Move_Coin.speed = 4f;
                 break;
             case 24:
-                Spawner.maxTime = 1.6f;
+                Spawner.TimeSpawnObstacle = 1.6f;
+                Spawner.TimeSpawnEnemy = 1.6f;
                 Move_Obstacle.speed = 5f;
-                Move_Coin.speed = 5f;
                 break;
             case 32:
-                Spawner.maxTime = 1.4f;
+                Spawner.TimeSpawnObstacle = 1.4f;
+                Spawner.TimeSpawnEnemy = 1.4f;
                 Move_Obstacle.speed = 6f;
-                Move_Coin.speed = 6f;
                 break;
         }
     }
@@ -74,20 +81,31 @@ public class UIManager : MonoBehaviour
         CoinText.text = coin.ToString();
     }
     
+    public void ShowStartGamePanel()
+    {
+        StartGamePanel.SetActive(true);
+    }
+    
     public void ShowGameOverPanel()
     {
         gameOverPanel.SetActive(true);
         Time.timeScale = 0f;
     }
 
+    public void StartGame()
+    {
+        StartGamePanel.SetActive(false);
+        Time.timeScale = 1f;
+        hasStartGame = true;
+    }
+    
     public void RestartGame()
     {
         score = 0;
         coin = 0;
         
-        Spawner.maxTime = 2.2f;
+        //Spawner.maxTime = 2.2f;
         Move_Obstacle.speed = 2;
-        Move_Coin.speed = 2;
         
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
