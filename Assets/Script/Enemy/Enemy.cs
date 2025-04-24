@@ -22,5 +22,12 @@ public class Enemy : MonoBehaviour
             UIManager.instance.ShowGameOverPanel();
             Destroy(other.gameObject);
         }
+        
+        if (other.CompareTag("Bullet"))
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
     }
+
 }

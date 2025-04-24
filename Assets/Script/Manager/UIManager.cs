@@ -50,27 +50,27 @@ public class UIManager : MonoBehaviour
             case 0:
                 Spawner.TimeSpawnObstacle = 2.2f;
                 Spawner.TimeSpawnEnemy = 2.2f;
-                Move_Obstacle.speed = 2f;
+                MoveObject.speed = 2f;
                 break;
             case 8:
                 Spawner.TimeSpawnObstacle = 2;
                 Spawner.TimeSpawnEnemy = 2f;
-                Move_Obstacle.speed = 3f;
+                MoveObject.speed = 3f;
                 break;
             case 16:
                 Spawner.TimeSpawnObstacle = 1.8f;
                 Spawner.TimeSpawnEnemy = 1.8f;
-                Move_Obstacle.speed = 4f;
+                MoveObject.speed = 4f;
                 break;
             case 24:
                 Spawner.TimeSpawnObstacle = 1.6f;
                 Spawner.TimeSpawnEnemy = 1.6f;
-                Move_Obstacle.speed = 5f;
+                MoveObject.speed = 5f;
                 break;
             case 32:
                 Spawner.TimeSpawnObstacle = 1.4f;
                 Spawner.TimeSpawnEnemy = 1.4f;
-                Move_Obstacle.speed = 6f;
+                MoveObject.speed = 6f;
                 break;
         }
     }
@@ -104,8 +104,9 @@ public class UIManager : MonoBehaviour
         score = 0;
         coin = 0;
         
-        //Spawner.maxTime = 2.2f;
-        Move_Obstacle.speed = 2;
+        Spawner.TimeSpawnObstacle = 2.2f;
+        Spawner.TimeSpawnEnemy = 2.2f;
+        MoveObject.speed = 2f;
         
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

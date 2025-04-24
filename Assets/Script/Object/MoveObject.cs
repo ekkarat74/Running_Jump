@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Move_Obstacle : MonoBehaviour
+public class MoveObject : MonoBehaviour
 {
     public static float speed = 2f;
     

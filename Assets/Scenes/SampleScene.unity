@@ -681,10 +681,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2144276651}
   - {fileID: 1749463068}
   - {fileID: 2138750207}
   - {fileID: 837107040}
-  - {fileID: 2144276651}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1149,6 +1149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 12.5
+  BulletSpawnPoint: {fileID: 1714731642}
+  BulletPrefab: {fileID: 6024959126410760078, guid: a652d0afa625aef45bab20707013d124, type: 3}
+  fireRate: 0.85
+  autoFire: 1
 --- !u!61 &1030097500
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1285,7 +1289,8 @@ Transform:
   m_LocalPosition: {x: -14.050001, y: 3.3699996, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1714731642}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1030097504
@@ -1899,6 +1904,37 @@ Transform:
   - {fileID: 271710483}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1714731641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1714731642}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1714731642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714731641}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.532, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1030097503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1749463067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,7 +2070,6 @@ GameObject:
   - component: {fileID: 2097717734}
   - component: {fileID: 2097717733}
   - component: {fileID: 2097717735}
-  - component: {fileID: 2097717736}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2085,21 +2120,6 @@ MonoBehaviour:
   CoinText: {fileID: 654272005}
   gameOverPanel: {fileID: 1749463067}
   StartGamePanel: {fileID: 2144276648}
---- !u!114 &2097717736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097717732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9570bdcaab6b3cf4093cc085c35ed6fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillCooldown: 5
-  skillDuration: 1
-  MaxSpeed: 3
 --- !u!1 &2138750206
 GameObject:
   m_ObjectHideFlags: 0
