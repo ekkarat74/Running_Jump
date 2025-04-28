@@ -3,17 +3,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Controller")]
-    public float jumpForce;
+    [SerializeField]private float jumpForce;
     private Rigidbody2D rb;
     
     [Header("Shooting")]
-    public Transform BulletSpawnPoint;
-    public GameObject BulletPrefab;
-    public float fireRate = 0.3f;
+    [SerializeField]private Transform bulletspawnPoint;
+    [SerializeField]private GameObject bulletPrefab;
+    [SerializeField]private float fireRate = 0.3f;
     private float nextFireTime = 0f;
 
     [Header("Auto Fire")]
-    public bool autoFire = true; 
+    [SerializeField]private bool autoFire = true; 
 
     // Start is called before the first frame update
     void Start()
@@ -39,9 +39,9 @@ public class PlayerController : MonoBehaviour
 
     void ShootBullet()
     {
-        if (BulletPrefab && BulletSpawnPoint)
+        if (bulletPrefab && bulletspawnPoint)
         {
-            Instantiate(BulletPrefab, BulletSpawnPoint.position, BulletSpawnPoint.rotation);
+            Instantiate(bulletPrefab, bulletspawnPoint.position, bulletspawnPoint.rotation);
         }
     }
     

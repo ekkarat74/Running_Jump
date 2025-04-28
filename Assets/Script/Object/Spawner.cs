@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -10,14 +8,14 @@ public class Spawner : MonoBehaviour
     
     [Header("Settings Spawner")]
     [SerializeField] private float heightRange = 0.45f;
-    [SerializeField] private float DestoryObject = 10f;
+    [SerializeField] private float destroyObject = 10f;
     
     [Header("Game Object Spawner")]
-    [SerializeField] private GameObject Obstacle;
-    [SerializeField] private GameObject Enemy;
+    [SerializeField] private GameObject obstacle;
+    [SerializeField] private GameObject enemy;
 
-    private float obstacletimer;
-    private float enemytimer;
+    private float obstacleTimer;
+    private float enemyTimer;
     
     // Start is called before the first frame update
     void Start()
@@ -29,34 +27,34 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        obstacletimer += Time.deltaTime;
-        enemytimer += Time.deltaTime;
+        obstacleTimer += Time.deltaTime;
+        enemyTimer += Time.deltaTime;
         
-        if (obstacletimer > TimeSpawnObstacle)
+        if (obstacleTimer > TimeSpawnObstacle)
         {
             SpawnObstacle();
-            obstacletimer = 0;
+            obstacleTimer = 0;
         }
 
-        if (enemytimer > TimeSpawnEnemy)
+        if (enemyTimer > TimeSpawnEnemy)
         {
             SpawnEnemy();
-            enemytimer = 0;
+            enemyTimer = 0;
         }
     }
 
     void SpawnObstacle()
     {
         Vector3 spawnPosition = transform.position + new Vector3(0, Random.Range(-heightRange, heightRange));
-        GameObject obstacle = Instantiate(Obstacle, spawnPosition, Quaternion.identity);
-        
-        Destroy(obstacle, DestoryObject);
+        GameObject obstacle = Instantiate(this.obstacle, spawnPosition, Quaternion.identity);
+
+        Destroy(obstacle, destroyObject);
     }
 
     void SpawnEnemy()
     {
         Vector3 spawnPos = transform.position + new Vector3(0, Random.Range(-heightRange, heightRange), 0);
-        GameObject enemy = Instantiate(Enemy, spawnPos, Quaternion.identity);
-        Destroy(enemy, DestoryObject);
+        GameObject enemy = Instantiate(this.enemy, spawnPos, Quaternion.identity);
+        Destroy(enemy, destroyObject);
     }
 }
