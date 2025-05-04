@@ -1370,8 +1370,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 12.5
-  BulletSpawnPoint: {fileID: 1714731642}
-  BulletPrefab: {fileID: 6024959126410760078, guid: a652d0afa625aef45bab20707013d124, type: 3}
+  bulletspawnPoint: {fileID: 1714731642}
+  bulletPrefab: {fileID: 6024959126410760078, guid: a652d0afa625aef45bab20707013d124, type: 3}
   fireRate: 0.85
   autoFire: 1
 --- !u!61 &1030097500
